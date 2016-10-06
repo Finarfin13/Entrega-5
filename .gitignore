@@ -10,3 +10,177 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+/*
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+package entrega5_finarfin;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author finarfin
+ */
+public class Entrega5_Finarfin {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        System.out.println("Bienvenido al programa de Finarfin");
+        resta();
+        barras();
+
+        Scanner as = new Scanner(System.in);
+        System.out.println("Ingrese el tamaño n de la matriz");
+        int a = as.nextInt();
+
+        Scanner sd = new Scanner(System.in);
+        System.out.println("Ingrese el tamaño m de la matriz");
+        int b = sd.nextInt();
+
+        int qw[][] = new int[b][a];
+
+        for (int c = 0; c < b; c++) {
+            for (int d = 0; d < a; d++) {
+                int e = (int) Math.floor(Math.random() * (10 - 1) + 1);
+                qw[c][d] = e;
+            }
+        }
+
+        for (int c = 0; c < b; c++) {
+            for (int d = 0; d < a; d++) {
+                System.out.print(qw[c][d] + " ");
+            }
+            System.out.println("");
+        }
+
+        double c = suma(qw);
+        System.out.println(c);
+
+        Scanner df = new Scanner(System.in);
+        System.out.println("Ingrese el tamaño de la matriz");
+        int d = df.nextInt();
+
+        Scanner fg = new Scanner(System.in);
+        System.out.println("Ingrese el tamaño m de la matriz");
+        int e = fg.nextInt();
+
+        int we[][] = new int[e][d];
+
+        for (int f = 0; f < e; f++) {
+            for (int g = 0; g < d; g++) {
+                int h = (int) Math.floor(Math.random() * (10 - 1) + 1);
+                we[f][g] = h;
+            }
+        }
+
+        for (int f = 0; f < e; f++) {
+            for (int g = 0; g < d; g++) {
+                System.out.print(qw[f][g] + " ");
+            }
+            System.out.println("");
+        }
+
+        int i = sumafila(we);
+        System.out.println(i);
+    }
+
+    public static int sumafila(int[][] we) {
+        int b = we.length - 1;
+        Scanner as = new Scanner(System.in);
+        System.out.println("Ingrese la fila que desea sumar");
+        int c = as.nextInt() - 1;
+        int a = we[c].length;
+
+        int d = 0;
+        for (int e = 0; e < b; e++) {
+            d += we[c][e];
+        }
+        return d;
+    }
+
+    public static double suma(int[][] qw) {
+        int b = qw.length - 1;
+        int a = qw[b].length;
+        double c = 0;
+        for (int d = 0; d <= b; d++) {
+            for (int e = 0; e < a; e++) {
+                c += qw[d][e];
+            }
+        }
+
+        return c;
+    }
+
+    public static double resta() {
+        Scanner as = new Scanner(System.in);
+        System.out.println("Ingrese un numero entero");
+        int a = as.nextInt();
+
+        Scanner sd = new Scanner(System.in);
+        System.out.println("Ingrese un numero decimal");
+        double b = sd.nextDouble();
+
+        double c = a - b;
+        return c;
+    }
+
+    public static int[] barras() {
+        Scanner df = new Scanner(System.in);
+        System.out.println("Ingrese el tamaño del vector");
+        int a = df.nextInt();
+        int qw[] = new int[a];
+
+        System.out.println("Ingrese los valores deseados");
+
+        for (int b = 0; b < qw.length; b++) {
+            Scanner fg = new Scanner(System.in);
+            qw[b] = fg.nextInt();
+        }
+
+        for (int b = 0; b < qw.length - 1; b++) {
+            if (qw[b] < qw[b + 1]) {
+                int c = qw[b + 1];
+                qw[b + 1] = qw[b];
+                qw[b] = c;
+                b = -1;
+            } else {
+                b = b;
+            }
+        }
+        for (int b = 0; b < qw.length; b++) {
+            System.out.print(qw[b]);
+        }
+        int b = qw[0];
+
+        System.out.println("");
+
+        for (int c = 0; c < b; c++) {
+            for (int d = 0; d < qw.length; d++) {
+                int e = qw[d] + c;
+                if (e >= b) {
+                    System.out.print("*");
+                } else {
+                    System.out.print("");
+                }
+
+            }
+            System.out.println("");
+        }
+
+        return qw;
+    }
+}
